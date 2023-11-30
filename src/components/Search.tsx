@@ -9,7 +9,7 @@ const Search = () => {
       <Nav />
       <img className='login-bg' src={twodogs} alt='Two Dogs'></img>
       <div className='search-container'>
-        <IoSearch />
+        <IoSearch size={'30'} />
         <input className='search' placeholder='Seach for dogs'></input>
       </div>
     </div>

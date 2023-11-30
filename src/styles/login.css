@@ -10,10 +10,6 @@
   }
 }
 
-.login-container {
-  /* display: ; */
-}
-
 form {
   display: flex;
   flex-direction: column;
@@ -30,11 +26,15 @@ input {
   position: relative;
 }
 .form-content {
-  position: absolute;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  top: 20%;
-  right: 50vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background-color: #1b3638;
   padding: 20px;
   border-radius: 15px;
