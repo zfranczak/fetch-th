@@ -65,6 +65,7 @@ i {
   box-shadow: 0 10px 15px #0f1e1f;
   background-color: #1b3638;
   padding: 20px 25px 20px 25px;
+  color: #ffffff;
 }
 
 a {
@@ -73,7 +74,4 @@ a {
   text-decoration: inherit;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-a:hover {
-  color: #ffffff;
 }

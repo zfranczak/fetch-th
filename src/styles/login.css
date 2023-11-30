@@ -17,6 +17,13 @@
 form {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+}
+
+input {
+  border-radius: 15px;
+  height: 2.2em;
+  padding: 0 10px;
 }
 
 .login-container {
@@ -24,14 +31,24 @@ form {
 }
 .form-content {
   position: absolute;
-
-  bottom: 60%;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  top: 20%;
   right: 50vw;
-  background-color: #cccccc;
+  background-color: #1b3638;
+  padding: 20px;
+  border-radius: 15px;
+  color: white;
+  box-shadow: 5px 8px 6px -6px #33686b;
 }
 .btn {
-  background-color: blue;
+  background-color: #dec9de;
   color: white;
   padding: 16px;
   margin: 5px;
+  border-radius: 25px;
+  color: black;
+}
+.btn:hover {
+  background-color: #e9b0da;
 }

@@ -1,6 +1,7 @@
 import '../styles/login.css';
 import dogbones from '../assets/dogbones.jpg';
 import Logo from './Logo';
+import { Link } from 'react-router-dom';
 
 function Login() {
   return (
@@ -10,6 +11,8 @@ function Login() {
         <img className='login-bg' src={dogbones} alt='Dog Bones'></img>
         <div className='form-content'>
           <form>
+            <h1>Welcome back!</h1>
+            <p>Please enter your name and email.</p>
             <label>Name</label>
             <input type='text' placeholder='Enter Name' name='name' required />
 
