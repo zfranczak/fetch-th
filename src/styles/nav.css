@@ -5,14 +5,18 @@
 body {
   margin: 0;
 }
-.container {
+i {
+  padding: 0 10px 0 20px;
+}
+
+.nav-links {
   top: 0;
   left: 0;
   position: fixed;
   width: 100vw;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
   padding: 0;
@@ -22,6 +26,21 @@ body {
   transition: 0.5s;
   border-bottom: #1b3638 2px solid;
   box-shadow: 0 8px 6px -6px #1b3638;
+}
+.logo-dog {
+  font-size: 1.5em;
+}
+.logo-text {
+  font-size: 2.2em;
+}
+.site-title {
+  font-size: 1.2rem;
+  /* padding: 1rem; */
+  font-weight: 800;
+  color: #000000;
+}
+.site-title a:hover {
+  color: #0e5459;
 }
 .nav-locations {
   display: flex;
