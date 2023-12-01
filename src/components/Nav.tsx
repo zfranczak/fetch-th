@@ -8,12 +8,12 @@ const Nav = () => {
       <div className='nav-links'>
         <div className='site-title'>
           <Link to='/'>
-            <a className='title-text'>
+            <div className='title-text'>
               <i>
                 <PiDogFill className='logo-dog' />
               </i>
               <a className='logo-text'>DOGGIE DILEMA</a>
-            </a>
+            </div>
           </Link>
         </div>
         <ul className='nav-locations'>
