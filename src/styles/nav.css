@@ -19,7 +19,8 @@ i {
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-  padding: 0;
+  padding: 0 200px;
+
   background-color: rgb(255, 255, 255);
   min-height: 50px;
   z-index: 999;

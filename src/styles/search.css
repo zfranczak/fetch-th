@@ -4,21 +4,46 @@ html {
   margin: 0;
   overflow: hidden;
 }
+.container {
+  position: relative;
+}
+.search-head {
+  text-align: center;
+}
 .search-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5px;
   position: absolute;
-  background: rgba(255, 255, 255, 0.294);
-  top: 50%;
+  top: 15%;
   left: 50%;
   transform: translate(-50%, -50%);
-  height: 100%;
+  height: 80%;
   width: 100%;
 }
-.search {
+.filters {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+/* .search {
   height: 3rem;
-  width: 20%;
+  width: 50%;
   border-radius: 30px;
   padding: 20px;
+} */
+.search-bg {
+  width: 100vw;
+  object-fit: contain;
+  z-index: -1;
+  top: 0;
+}
+@media (max-width: 1200px) {
+  .search-bg {
+    width: 100%;
+    height: 100%;
+    object-position: center;
+  }
 }

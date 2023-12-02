@@ -1,0 +1,29 @@
+/* dogCard.css */
+
+.dog-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.dog-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.dog-name {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.dog-info {
+  margin-bottom: 5px;
+}

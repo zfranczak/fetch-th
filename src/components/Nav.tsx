@@ -9,10 +9,10 @@ const Nav = () => {
         <div className='site-title'>
           <Link to='/'>
             <div className='title-text'>
-              <i>
+              {/* <i>
                 <PiDogFill className='logo-dog' />
-              </i>
-              <a className='logo-text'>DOGGIE DILEMA</a>
+              </i> */}
+              DOGGIE DILEMA
             </div>
           </Link>
         </div>
