@@ -3,9 +3,12 @@ import Nav from './Nav';
 import '../styles/search.css';
 import twodogs from '../assets/twodogs.jpg';
 import Breeds from './Breeds';
+import { fetchDogData } from '../utils/dogAPIUtil';
+import SearchResults from './SearchResults';
 
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState('');
+  const [searchResultData, setSearchResultData] = useState<any[]>([]);
 
   const handleSearch = (breed: string) => {
     if (breed) {
@@ -20,14 +23,24 @@ const Search = () => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
-
           return response.json();
         })
-        .then((data) => {
+        .then(async (data) => {
           console.log('Search response data:', data);
+
+          if (data && data.resultIds) {
+            const resultIds = data.resultIds;
+            console.log('Result IDs: ', resultIds);
+            const fetchedDogData = await fetchDogData(resultIds);
+            console.log('Fetched dog data:', fetchedDogData);
+            setSearchResultData(fetchedDogData);
+          } else {
+            setSearchResultData([]); // No data found, set an empty array
+          }
         })
         .catch((error) => {
           console.error('Error searching:', error);
+          setSearchResultData([]); // Handle error by setting an empty array
         });
     } else {
       console.log('Please select a breed');
@@ -52,6 +65,12 @@ const Search = () => {
         >
           Search
         </button>
+        <div className='search-results-container'>
+          <h1>Search Results</h1>
+          {searchResultData.length > 0 && (
+            <SearchResults dogs={searchResultData} />
+          )}
+        </div>
       </div>
 
       <img className='search-bg' src={twodogs} alt='Two Dogs' />

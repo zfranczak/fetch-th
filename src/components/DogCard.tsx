@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/dog-card.css';
 
 interface Dog {
   id: string;
@@ -28,5 +29,5 @@ const DogCard: React.FC<DogCardProps> = ({ dog }) => {
     </div>
   );
 };
-
+console.log('dog card created');
 export default DogCard;

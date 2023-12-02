@@ -2,7 +2,7 @@ body,
 html {
   height: 100%;
   margin: 0;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 .container {
   position: relative;
@@ -46,4 +46,17 @@ html {
     height: 100%;
     object-position: center;
   }
+}
+
+.search-results-container {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: white;
+  padding: 20px;
+  width: 80%;
+  max-width: 1200px;
+  border-radius: 15px;
+  text-align: center;
 }
