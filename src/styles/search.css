@@ -28,6 +28,16 @@ html {
   flex-direction: row;
   gap: 10px;
 }
+.next25 {
+  cursor: pointer;
+}
+.pag-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 15px;
+  color: blue;
+}
 /* .search {
   height: 3rem;
   width: 50%;

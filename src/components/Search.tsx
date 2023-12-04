@@ -7,13 +7,35 @@ import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
 
 const Search = () => {
-  const [selectedBreed, setSelectedBreed] = useState('');
+  const [selectedBreed, setSelectedBreed] = useState<string>('');
   const [searchResultData, setSearchResultData] = useState<any[]>([]);
+  const [total, setTotal] = useState<number>(0);
+  const [nextPage, setNextPage] = useState<number>(0);
 
-  const handleSearch = (breed: string) => {
+  let nextResults = '';
+
+  const addNextResults = () => {
+    nextResults = `&size=25&from=${nextPage}`;
+  };
+
+  const handleNextPageClick = () => {
+    setNextPage(nextPage + 25);
+    addNextResults();
+    handleSearch(selectedBreed, nextResults);
+    console.log(nextPage);
+  };
+  const handlePrevPageClick = () => {
+    setNextPage(nextPage - 25);
+
+    addNextResults();
+    handleSearch(selectedBreed, nextResults);
+    console.log(nextPage);
+  };
+
+  const handleSearch = (breed: string, nextResults: string) => {
     if (breed) {
       fetch(
-        `https://frontend-take-home-service.fetch.com/dogs/search?breeds=${breed}`,
+        `https://frontend-take-home-service.fetch.com/dogs/search?breeds=${breed}${nextResults}`,
         {
           method: 'GET',
           credentials: 'include',
@@ -30,6 +52,9 @@ const Search = () => {
 
           if (data && data.resultIds) {
             const resultIds = data.resultIds;
+            const total = data.total;
+            console.log('Total Number of Results', total);
+            setTotal(total);
             console.log('Result IDs: ', resultIds);
             const fetchedDogData = await fetchDogData(resultIds);
             console.log('Fetched dog data:', fetchedDogData);
@@ -61,12 +86,21 @@ const Search = () => {
         </div>
         <button
           className='search-btn'
-          onClick={() => handleSearch(selectedBreed)}
+          onClick={() => handleSearch(selectedBreed, nextResults)}
         >
           Search
         </button>
         <div className='search-results-container'>
           <h1>Search Results</h1>
+          <p>Total number of results: {total}</p>
+          <div className='pag-container'>
+            <p className='next25' onClick={handlePrevPageClick}>
+              Previous 25
+            </p>
+            <p className='next25' onClick={handleNextPageClick}>
+              Next 25
+            </p>
+          </div>
           {searchResultData.length > 0 && (
             <SearchResults dogs={searchResultData} />
           )}
