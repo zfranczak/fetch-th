@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import '../styles/nav.css';
-import { PiDogFill } from 'react-icons/pi';
 
 const Nav = () => {
   return (
@@ -8,12 +7,7 @@ const Nav = () => {
       <div className='nav-links'>
         <div className='site-title'>
           <Link to='/'>
-            <div className='title-text'>
-              {/* <i>
-                <PiDogFill className='logo-dog' />
-              </i> */}
-              DOGGIE DILEMA
-            </div>
+            <div className='title-text'>DOGGIE DILEMA</div>
           </Link>
         </div>
         <ul className='nav-locations'>
