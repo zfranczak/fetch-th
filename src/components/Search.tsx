@@ -11,6 +11,8 @@ const Search = () => {
   const [searchResultData, setSearchResultData] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [nextPage, setNextPage] = useState<number>(0);
+  const [isPrevVisible, setIsPrevVisible] = useState(false);
+  const [isNextVisible, setIsNextVisible] = useState(false);
 
   let nextResults = '';
 
@@ -20,6 +22,7 @@ const Search = () => {
 
   const handleNextPageClick = () => {
     setNextPage(nextPage + 25);
+
     addNextResults();
     handleSearch(selectedBreed, nextResults);
     console.log(nextPage);
@@ -29,6 +32,7 @@ const Search = () => {
 
     addNextResults();
     handleSearch(selectedBreed, nextResults);
+
     console.log(nextPage);
   };
 
@@ -59,8 +63,17 @@ const Search = () => {
             const fetchedDogData = await fetchDogData(resultIds);
             console.log('Fetched dog data:', fetchedDogData);
             setSearchResultData(fetchedDogData);
+            if (total > 0) {
+              setIsPrevVisible(nextPage >= 25);
+              setIsNextVisible(total > nextPage + 25);
+            } else {
+              setIsPrevVisible(false);
+              setIsNextVisible(false);
+            }
           } else {
             setSearchResultData([]); // No data found, set an empty array
+            setIsPrevVisible(false);
+            setIsNextVisible(false);
           }
         })
         .catch((error) => {
@@ -94,10 +107,16 @@ const Search = () => {
           <h1>Search Results</h1>
           <p>Total number of results: {total}</p>
           <div className='pag-container'>
-            <p className='next25' onClick={handlePrevPageClick}>
+            <p
+              className={`next25 ${isPrevVisible ? 'visible' : ''}`}
+              onClick={handlePrevPageClick}
+            >
               Previous 25
             </p>
-            <p className='next25' onClick={handleNextPageClick}>
+            <p
+              className={`next25 ${isNextVisible ? 'visible' : ''}`}
+              onClick={handleNextPageClick}
+            >
               Next 25
             </p>
           </div>

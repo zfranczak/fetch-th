@@ -70,3 +70,10 @@ html {
   border-radius: 15px;
   text-align: center;
 }
+.next25 {
+  display: none;
+}
+
+.next25.visible {
+  display: inline-block;
+}

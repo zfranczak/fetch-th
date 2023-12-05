@@ -1,33 +1,32 @@
+// DogCard.tsx
 import React from 'react';
-import '../styles/dog-card.css';
-
-interface Dog {
-  id: string;
-  img: string;
-  name: string;
-  age: number;
-  zip_code: string;
-  breed: string;
-}
 
 interface DogCardProps {
   dog: Dog;
 }
 
 const DogCard: React.FC<DogCardProps> = ({ dog }) => {
-  const { id, img, name, age, zip_code, breed } = dog;
+  const handleAddToDogList = () => {
+    const storedDogList = localStorage.getItem('doglist');
+    let dogList: Dog[] = [];
+
+    if (storedDogList) {
+      dogList = JSON.parse(storedDogList);
+    }
+
+    // Add the dog to the dogList array
+    dogList.push(dog);
+
+    // Update the stored doglist in localStorage
+    localStorage.setItem('doglist', JSON.stringify(dogList));
+  };
 
   return (
     <div className='dog-card'>
-      <img src={img} alt={name} className='dog-image' />
-      <div className='dog-details'>
-        <h2>{name}</h2>
-        <p>Breed: {breed}</p>
-        <p>Age: {age}</p>
-        <p>Zip Code: {zip_code}</p>
-      </div>
+      {/* Your dog card UI */}
+      <button onClick={handleAddToDogList}>Add to Dog List</button>
     </div>
   );
 };
-console.log('dog card created');
+
 export default DogCard;
