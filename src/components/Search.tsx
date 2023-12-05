@@ -6,6 +6,15 @@ import Breeds from './Breeds';
 import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
 
+interface Dog {
+  id: string;
+  img: string;
+  name: string;
+  age: number;
+  zip_code: string;
+  breed: string;
+}
+
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
   const [searchResultData, setSearchResultData] = useState<any[]>([]);
@@ -102,7 +111,12 @@ const Search = () => {
             </p>
           </div>
           {searchResultData.length > 0 && (
-            <SearchResults dogs={searchResultData} />
+            <SearchResults
+              dogs={searchResultData}
+              onAdd={function (dog: Dog): void {
+                throw new Error('Function not implemented.');
+              }}
+            />
           )}
         </div>
       </div>
