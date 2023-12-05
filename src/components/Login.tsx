@@ -7,7 +7,7 @@ import { useState } from 'react';
 function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
