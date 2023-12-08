@@ -1,0 +1,18 @@
+.favorites-container {
+  margin-top: 7%;
+  text-align: center;
+}
+
+.match-btn {
+  height: 100px;
+  width: 300px;
+  border-radius: 15px;
+  font-size: 30px;
+}
+.match-btn:hover {
+  cursor: pointer;
+  box-shadow: 5px 5px violet;
+  height: 110px;
+  width: 310px;
+  font-size: 36px;
+}

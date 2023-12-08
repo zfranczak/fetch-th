@@ -1,0 +1,23 @@
+.match-card {
+  display: block;
+  background-color: blue;
+  max-width: 800px;
+  margin: 15px auto;
+  padding: 10px;
+  box-shadow: 5px -3px 30px red, -5px 3px 30px red;
+  border-radius: 50px;
+}
+
+.match-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.match-image {
+  width: 600px;
+  height: 600px;
+  object-fit: cover;
+  border-radius: 20px;
+}

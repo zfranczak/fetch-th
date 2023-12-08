@@ -11,8 +11,20 @@ const Search = () => {
   const [searchResultData, setSearchResultData] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
   const [nextPage, setNextPage] = useState<number>(0);
+  const [ascending, setAscending] = useState<string>('asc');
 
   let nextResults = '';
+
+  const breedSort = `&sort=breed:${ascending}`;
+
+  const handleAscDesc = () => {
+    if (ascending === 'asc') {
+      setAscending('desc');
+    } else {
+      setAscending('asc');
+    }
+    handleSearch();
+  };
 
   const addNextResults = () => {
     nextResults = `&size=25&from=${nextPage}`;
@@ -32,44 +44,41 @@ const Search = () => {
     console.log(nextPage);
   };
 
-  const handleSearch = (breed: string, nextResults: string) => {
-    if (breed) {
-      fetch(
-        `https://frontend-take-home-service.fetch.com/dogs/search?breeds=${breed}${nextResults}`,
-        {
-          method: 'GET',
-          credentials: 'include',
-        }
-      )
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok');
-          }
-          return response.json();
-        })
-        .then(async (data) => {
-          console.log('Search response data:', data);
+  const handleSearch = (breed: string = '', nextResults: string = '') => {
+    const endpoint = breed
+      ? `https://frontend-take-home-service.fetch.com/dogs/search?breeds=${breed}${nextResults}${breedSort}`
+      : `https://frontend-take-home-service.fetch.com/dogs/search?${nextResults}${breedSort}`;
 
-          if (data && data.resultIds) {
-            const resultIds = data.resultIds;
-            const total = data.total;
-            console.log('Total Number of Results', total);
-            setTotal(total);
-            console.log('Result IDs: ', resultIds);
-            const fetchedDogData = await fetchDogData(resultIds);
-            console.log('Fetched dog data:', fetchedDogData);
-            setSearchResultData(fetchedDogData);
-          } else {
-            setSearchResultData([]); // No data found, set an empty array
-          }
-        })
-        .catch((error) => {
-          console.error('Error searching:', error);
-          setSearchResultData([]); // Handle error by setting an empty array
-        });
-    } else {
-      console.log('Please select a breed');
-    }
+    fetch(endpoint, {
+      method: 'GET',
+      credentials: 'include',
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(async (data) => {
+        console.log('Search response data:', data);
+
+        if (data && data.resultIds) {
+          const resultIds = data.resultIds;
+          const total = data.total;
+          console.log('Total Number of Results', total);
+          setTotal(total);
+          console.log('Result IDs: ', resultIds);
+          const fetchedDogData = await fetchDogData(resultIds);
+          console.log('Fetched dog data:', fetchedDogData);
+          setSearchResultData(fetchedDogData);
+        } else {
+          setSearchResultData([]); // No data found, set an empty array
+        }
+      })
+      .catch((error) => {
+        console.error('Error searching:', error);
+        setSearchResultData([]); // Handle error by setting an empty array
+      });
   };
 
   return (
@@ -97,6 +106,9 @@ const Search = () => {
             <p className='next25' onClick={handlePrevPageClick}>
               Previous 25
             </p>
+            <button className='asc-desc-btn' onClick={handleAscDesc}>
+              Asc?desc: Breed
+            </button>
             <p className='next25' onClick={handleNextPageClick}>
               Next 25
             </p>

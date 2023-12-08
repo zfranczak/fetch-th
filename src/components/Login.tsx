@@ -70,9 +70,6 @@ function Login() {
             <button type='submit' className='btn login-btn'>
               Login
             </button>
-            <label>
-              <input type='checkbox' name='remember' /> Remember me
-            </label>
           </form>
         </div>
       </div>

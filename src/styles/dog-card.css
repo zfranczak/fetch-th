@@ -45,3 +45,15 @@
 .dog-details h2 {
   width: 150px;
 }
+
+.heart {
+  color: red;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  height: 36px;
+  width: 36px;
+}
+.heart:hover {
+  font-size: 30px;
+}

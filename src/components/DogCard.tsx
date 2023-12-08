@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/dog-card.css';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 
 interface Dog {
   id: string;
@@ -74,8 +75,8 @@ const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
         <p>Breed: {breed}</p>
         <p>Age: {age}</p>
         <p>Zip Code: {zip_code}</p>
-        <button className='btn' onClick={handleClick}>
-          {isAddedToList ? 'Remove from Dog List' : 'Add to Dog List'}
+        <button className='heart' onClick={handleClick}>
+          {isAddedToList ? <FaHeart /> : <FaRegHeart />}
         </button>
       </div>
     </div>
