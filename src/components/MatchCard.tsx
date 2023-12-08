@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import '../styles/match-card.css';
 
 interface Dog {
@@ -16,7 +15,7 @@ interface MatchCardProps {
 
 const MatchCard: React.FC<MatchCardProps> = ({ dog }) => {
   const { id, img, name, age, zip_code, breed } = dog;
-
+  console.log(id);
   return (
     <div className='match-card'>
       <h1>Your Perfect Match!</h1>
