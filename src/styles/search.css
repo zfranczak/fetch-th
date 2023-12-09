@@ -2,8 +2,9 @@ body,
 html {
   height: 100%;
   margin: 0;
-  /* overflow: hidden; */
+  overflow-x: hidden;
 }
+
 .container {
   position: relative;
 }
@@ -16,13 +17,24 @@ html {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  position: absolute;
-  top: 15%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 80%;
+  position: relative;
+
+  height: 50vh;
   width: 100%;
 }
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/twodogs.jpg');
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+  background-position: center;
+}
+
 .filters {
   display: flex;
   flex-direction: row;
@@ -59,7 +71,7 @@ html {
   border-radius: 30px;
   padding: 20px;
 } */
-.search-bg {
+/* .search-bg {
   width: 100vw;
   object-fit: contain;
   z-index: -1;
@@ -71,17 +83,32 @@ html {
     height: 100%;
     object-position: center;
   }
-}
+} */
 
 .search-results-container {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translateX(-50%);
+  position: relative;
+  margin: 0 auto 50px auto;
+
   background-color: #1b3638;
   padding: 20px;
   width: 80%;
   max-width: 1500px;
   border-radius: 15px;
   text-align: center;
+}
+.main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+.content {
+  flex: 1;
+  position: relative;
+}
+.foot {
+  position: relative;
+  flex-shrink: 0;
+  bottom: 0;
+  width: 100vw;
 }

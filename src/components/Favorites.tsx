@@ -3,6 +3,7 @@ import DogCard from './DogCard';
 import Nav from './Nav';
 import '../styles/favorites.css';
 import MatchCard from './MatchCard';
+import Footer from './Footer';
 
 interface Dog {
   id: string;
@@ -79,15 +80,22 @@ const Favorites = () => {
   return (
     <div>
       <Nav />
-      <div className='favorites-container'>
-        {match && <MatchCard key={match.id} dog={match} />}
-        <button className='match-btn' onClick={makeMatch}>
-          Find My Perfect Match
-        </button>
-        <h1>Favorites</h1>
-        {dogList.map((dog) => (
-          <DogCard key={dog.id} dog={dog} onRemove={removeFromDogList} />
-        ))}
+      <div className='main'>
+        <div className='favorites-container'>
+          {match && <MatchCard key={match.id} dog={match} />}
+          <button className='match-btn' onClick={makeMatch}>
+            Generate My Perfect Match
+          </button>
+          <h1>Favorites</h1>
+          <div className='card-container'>
+            {dogList.map((dog) => (
+              <DogCard key={dog.id} dog={dog} onRemove={removeFromDogList} />
+            ))}
+          </div>
+        </div>
+        <div className='foot'>
+          <Footer />
+        </div>
       </div>
     </div>
   );

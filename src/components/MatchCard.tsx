@@ -1,4 +1,6 @@
 import '../styles/match-card.css';
+import { FaDog, FaBirthdayCake } from 'react-icons/fa';
+import { FaMapLocationDot } from 'react-icons/fa6';
 
 interface Dog {
   id: string;
@@ -22,10 +24,21 @@ const MatchCard: React.FC<MatchCardProps> = ({ dog }) => {
       <div className='match-container'>
         <img src={img} alt={name} className='match-image' />
         <div className='match-details'>
-          <h2>{name}</h2>
-          <p>Breed: {breed}</p>
-          <p>Age: {age}</p>
-          <p>Zip Code: {zip_code}</p>
+          <h2 className='match-name'>{name}</h2>
+          <div className='match-stats'>
+            <p className='match-info'>
+              <FaDog className='breed-icon icon' />
+              {breed}
+            </p>
+            <p className='match-info'>
+              <FaBirthdayCake className='age-icon icon' />
+              {age} years
+            </p>
+            <p className='match-info'>
+              <FaMapLocationDot className='location-icon icon' />
+              {zip_code}
+            </p>
+          </div>
         </div>
       </div>
     </div>

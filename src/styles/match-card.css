@@ -1,11 +1,12 @@
 .match-card {
   display: block;
-  background-color: blue;
+  background-color: #1b3638;
   max-width: 800px;
   margin: 15px auto;
   padding: 10px;
-  box-shadow: 5px -3px 30px red, -5px 3px 30px red;
+  box-shadow: 5px -3px 30px rgb(0, 0, 0);
   border-radius: 50px;
+  color: white;
 }
 
 .match-container {
@@ -20,4 +21,28 @@
   height: 600px;
   object-fit: cover;
   border-radius: 20px;
+}
+.match-name {
+  font-size: 50px;
+}
+.match-info {
+  max-width: 50%;
+  height: 50px;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.match-stats {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 10px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #315458;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.368);
 }

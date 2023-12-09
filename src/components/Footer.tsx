@@ -17,17 +17,20 @@ const Footer = () => {
           <h4>Follow Us</h4>
           <ul>
             <li>
-              <a href='https://facebook.com'>
+              <a href='https://github.com/zfranczak' target='_blank'>
                 <FaGithub />
               </a>
             </li>
             <li>
-              <a href='https://twitter.com'>
+              <a
+                href='https://www.linkedin.com/in/zachary-franczak/'
+                target='_blank'
+              >
                 <FaLinkedin />
               </a>
             </li>
             <li>
-              <a href='https://instagram.com'>
+              <a href='https://twitter.com/zakfranczak' target='_blank'>
                 <FaSquareXTwitter />
               </a>
             </li>
@@ -35,7 +38,7 @@ const Footer = () => {
         </div>
       </div>
       <div className='footer-bottom'>
-        <p>&copy; 2023 YourWebsite. All rights reserved.</p>
+        <p>&copy; 2023 Doggie Dilema. All rights reserved.</p>
       </div>
     </footer>
   );

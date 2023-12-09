@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Nav from './Nav';
 import '../styles/search.css';
-import twodogs from '../assets/twodogs.jpg';
 import Breeds from './Breeds';
 import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
@@ -89,53 +88,61 @@ const Search = () => {
   return (
     <div className='container'>
       <Nav />
-
-      <div className='search-container'>
-        <div className='search-head'>
-          <h1>Find Your Perfect Dog</h1>
-          <h2>Select from the filters below...</h2>
-        </div>
-        <div className='filters'>
-          <Breeds handleFilterByBreed={setSelectedBreed} />
-        </div>
-        <button
-          className='search-btn'
-          onClick={() => handleSearch(selectedBreed, nextResults)}
-        >
-          Search
-        </button>
-        <div className='search-results-container'>
-          <h1>Search Results</h1>
-          <p>Total number of results: {total}</p>
-          <div className='sort'>
-            <p>Sort by: </p>
-            <button className='asc-desc-btn btn' onClick={handleAscDesc}>
-              Breed {isAscending ? <FaArrowUp /> : <FaArrowDown />}
+      <div className='main'>
+        <div className='content'>
+          <div className='background-image' />
+          <div className='search-container'>
+            <div className='search-head'>
+              <h1>Find Your Perfect Dog</h1>
+              <h2>Select from the filters below...</h2>
+            </div>
+            <div className='filters'>
+              <Breeds handleFilterByBreed={setSelectedBreed} />
+            </div>
+            <button
+              className='search-btn'
+              onClick={() => handleSearch(selectedBreed, nextResults)}
+            >
+              Search
             </button>
           </div>
+          <div
+            className='search-results-container'
+            style={{ display: searchResultData.length ? 'block' : 'none' }}
+          >
+            <h1>Search Results</h1>
+            <p>Total number of results: {total}</p>
+            <div className='sort'>
+              <p>Sort by: </p>
+              <button className='asc-desc-btn btn' onClick={handleAscDesc}>
+                Breed {isAscending ? <FaArrowUp /> : <FaArrowDown />}
+              </button>
+            </div>
 
-          {searchResultData.length > 0 && (
-            <SearchResults
-              dogs={searchResultData}
-              onAdd={function (): void {
-                throw new Error('Function not implemented.');
-              }}
-            />
-          )}
-          <div className='pag-container'>
-            <button className='next25 btn' onClick={handlePrevPageClick}>
-              Previous 25
-            </button>
+            {searchResultData.length > 0 && (
+              <SearchResults
+                dogs={searchResultData}
+                onAdd={function (): void {
+                  throw new Error('Function not implemented.');
+                }}
+              />
+            )}
+            <div className='pag-container'>
+              <button className='next25 btn' onClick={handlePrevPageClick}>
+                Previous 25
+              </button>
 
-            <button className='next25 btn' onClick={handleNextPageClick}>
-              Next 25
-            </button>
+              <button className='next25 btn' onClick={handleNextPageClick}>
+                Next 25
+              </button>
+            </div>
           </div>
+        </div>
+        {/* <img className='search-bg' src={twodogs} alt='Two Dogs' /> */}
+        <div className='foot'>
+          <Footer />
         </div>
       </div>
-
-      <img className='search-bg' src={twodogs} alt='Two Dogs' />
-      <Footer />
     </div>
   );
 };
