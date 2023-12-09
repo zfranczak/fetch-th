@@ -5,6 +5,8 @@ import twodogs from '../assets/twodogs.jpg';
 import Breeds from './Breeds';
 import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
+import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
+import Footer from './Footer';
 
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
@@ -12,6 +14,7 @@ const Search = () => {
   const [total, setTotal] = useState<number>(0);
   const [nextPage, setNextPage] = useState<number>(0);
   const [ascending, setAscending] = useState<string>('asc');
+  const [isAscending, setIsAscending] = useState(true);
 
   let nextResults = '';
 
@@ -20,8 +23,10 @@ const Search = () => {
   const handleAscDesc = () => {
     if (ascending === 'asc') {
       setAscending('desc');
+      setIsAscending(!isAscending);
     } else {
       setAscending('asc');
+      setIsAscending(!isAscending);
     }
     handleSearch();
   };
@@ -102,17 +107,13 @@ const Search = () => {
         <div className='search-results-container'>
           <h1>Search Results</h1>
           <p>Total number of results: {total}</p>
-          <div className='pag-container'>
-            <p className='next25' onClick={handlePrevPageClick}>
-              Previous 25
-            </p>
-            <button className='asc-desc-btn' onClick={handleAscDesc}>
-              Asc?desc: Breed
+          <div className='sort'>
+            <p>Sort by: </p>
+            <button className='asc-desc-btn btn' onClick={handleAscDesc}>
+              Breed {isAscending ? <FaArrowUp /> : <FaArrowDown />}
             </button>
-            <p className='next25' onClick={handleNextPageClick}>
-              Next 25
-            </p>
           </div>
+
           {searchResultData.length > 0 && (
             <SearchResults
               dogs={searchResultData}
@@ -121,10 +122,20 @@ const Search = () => {
               }}
             />
           )}
+          <div className='pag-container'>
+            <button className='next25 btn' onClick={handlePrevPageClick}>
+              Previous 25
+            </button>
+
+            <button className='next25 btn' onClick={handleNextPageClick}>
+              Next 25
+            </button>
+          </div>
         </div>
       </div>
 
       <img className='search-bg' src={twodogs} alt='Two Dogs' />
+      <Footer />
     </div>
   );
 };

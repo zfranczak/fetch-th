@@ -67,7 +67,7 @@ function Login() {
               required
             />
 
-            <button type='submit' className='btn login-btn'>
+            <button type='submit' className='login-btn'>
               Login
             </button>
           </form>

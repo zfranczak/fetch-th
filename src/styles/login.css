@@ -41,7 +41,7 @@ input {
   color: white;
   box-shadow: 5px 8px 6px -6px #33686b;
 }
-.btn {
+.login-btn {
   background-color: #dec9de;
   color: white;
   padding: 16px;
@@ -49,6 +49,6 @@ input {
   border-radius: 25px;
   color: black;
 }
-.btn:hover {
+.login-btn:hover {
   background-color: #e9b0da;
 }

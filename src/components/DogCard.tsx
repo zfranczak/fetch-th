@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/dog-card.css';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { FaRegHeart, FaHeart, FaDog, FaBirthdayCake } from 'react-icons/fa';
+import { FaMapLocationDot } from 'react-icons/fa6';
 
 interface Dog {
   id: string;
@@ -68,16 +69,30 @@ const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
   }, []);
 
   return (
-    <div className='dog-card'>
+    <div
+      className={`dog-card ${isAddedToList ? 'selected' : 'unselected'}`}
+      onClick={handleClick}
+    >
       <img src={img} alt={name} className='dog-image' />
       <div className='dog-details'>
-        <h2>{name}</h2>
-        <p>Breed: {breed}</p>
-        <p>Age: {age}</p>
-        <p>Zip Code: {zip_code}</p>
-        <button className='heart' onClick={handleClick}>
-          {isAddedToList ? <FaHeart /> : <FaRegHeart />}
-        </button>
+        <h2 className='dog-name'>{name}</h2>
+        <div className='dog-stats'>
+          <p className='dog-info'>
+            <FaDog className='breed-icon icon' />
+            {breed}
+          </p>
+          <p className='dog-info'>
+            <FaBirthdayCake className='age-icon icon' />
+            {age} years
+          </p>
+          <p className='dog-info'>
+            <FaMapLocationDot className='location-icon icon' />
+            {zip_code}
+          </p>
+          <button className='dog-info heart' onClick={handleClick}>
+            {isAddedToList ? <FaHeart /> : <FaRegHeart />}
+          </button>
+        </div>
       </div>
     </div>
   );
