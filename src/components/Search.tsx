@@ -6,6 +6,7 @@ import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
 
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
@@ -14,20 +15,32 @@ const Search = () => {
   const [nextPage, setNextPage] = useState<number>(0);
   const [ascending, setAscending] = useState<string>('asc');
   const [isAscending, setIsAscending] = useState(true);
+  const [breedSortActive, setBreedSortActive] = useState(true);
+  const [ageSortActive, setAgeSortActive] = useState(false);
+  const [ageMin, setAgeMin] = useState<number>(0);
+  const [ageMax, setAgeMax] = useState<number>(15);
 
   let nextResults = '';
 
   const breedSort = `&sort=breed:${ascending}`;
+  const ageSort = `&sort=age:${ascending}`;
 
-  const handleAscDesc = () => {
-    if (ascending === 'asc') {
-      setAscending('desc');
-      setIsAscending(!isAscending);
-    } else {
-      setAscending('asc');
-      setIsAscending(!isAscending);
-    }
-    handleSearch();
+  const handleBreedSortClick = () => {
+    setBreedSortActive(true);
+    setAgeSortActive(false);
+    const newIsAscending = !isAscending;
+    setIsAscending(newIsAscending);
+    setAscending(newIsAscending ? 'asc' : 'desc');
+    handleSearch(selectedBreed, nextResults);
+  };
+
+  const handleAgeSortClick = () => {
+    setAgeSortActive(true);
+    setBreedSortActive(false);
+    const newIsAscending = !isAscending;
+    setIsAscending(newIsAscending);
+    setAscending(newIsAscending ? 'asc' : 'desc');
+    handleSearch(selectedBreed, nextResults);
   };
 
   const addNextResults = () => {
@@ -49,10 +62,19 @@ const Search = () => {
   };
 
   const handleSearch = (breed: string = '', nextResults: string = '') => {
-    const endpoint = breed
-      ? `https://frontend-take-home-service.fetch.com/dogs/search?breeds=${breed}${nextResults}${breedSort}`
-      : `https://frontend-take-home-service.fetch.com/dogs/search?${nextResults}${breedSort}`;
+    const ageFilters = `&ageMin=${ageMin}&ageMax=${ageMax}`;
 
+    let endpoint = `https://frontend-take-home-service.fetch.com/dogs/search?${nextResults}${ageFilters}`;
+
+    if (breedSortActive) {
+      endpoint += `${breedSort}`;
+    } else if (ageSortActive) {
+      endpoint += `${ageSort}`;
+    }
+
+    if (breed) {
+      endpoint += `&breeds=${breed}`;
+    }
     fetch(endpoint, {
       method: 'GET',
       credentials: 'include',
@@ -76,12 +98,12 @@ const Search = () => {
           console.log('Fetched dog data:', fetchedDogData);
           setSearchResultData(fetchedDogData);
         } else {
-          setSearchResultData([]); // No data found, set an empty array
+          setSearchResultData([]);
         }
       })
       .catch((error) => {
         console.error('Error searching:', error);
-        setSearchResultData([]); // Handle error by setting an empty array
+        setSearchResultData([]);
       });
   };
 
@@ -93,17 +115,49 @@ const Search = () => {
           <div className='background-image' />
           <div className='search-container'>
             <div className='search-head'>
-              <h1>Find Your Perfect Dog</h1>
-              <h2>Select from the filters below...</h2>
+              <h1 className='head-text'>FIND YOUR PERFECT DOG</h1>
+              <h2 className='head-text'>
+                Let Doggie Dilema match you with your perfect dog!
+              </h2>
+              <p className='head-text'>
+                All you need to do is search through out database of dogs,
+                select your favorites, and then we will generate a match for
+                you!
+              </p>
             </div>
             <div className='filters'>
               <Breeds handleFilterByBreed={setSelectedBreed} />
+              <select
+                value={ageMin}
+                onChange={(e) => setAgeMin(parseInt(e.target.value))}
+              >
+                {Array.from({ length: 21 }, (_, i) => (
+                  <option key={i} value={i}>
+                    Age Minimum: {i}
+                  </option>
+                ))}
+              </select>
+              <select
+                value={ageMax}
+                onChange={(e) => setAgeMax(parseInt(e.target.value))}
+              >
+                {Array.from({ length: 21 }, (_, i) => (
+                  <option key={i} value={i}>
+                    Age Maximum: {i}
+                  </option>
+                ))}
+              </select>
             </div>
             <button
-              className='search-btn'
+              className='search-btn btn'
               onClick={() => handleSearch(selectedBreed, nextResults)}
             >
               Search
+            </button>
+            <button className='search-btn btn'>
+              <Link to='/favorites' className='link-button'>
+                Go To My Favorites
+              </Link>
             </button>
           </div>
           <div
@@ -114,8 +168,33 @@ const Search = () => {
             <p>Total number of results: {total}</p>
             <div className='sort'>
               <p>Sort by: </p>
-              <button className='asc-desc-btn btn' onClick={handleAscDesc}>
-                Breed {isAscending ? <FaArrowUp /> : <FaArrowDown />}
+              <button
+                className={`asc-desc-btn btn ${
+                  breedSortActive ? 'active' : ''
+                }`}
+                onClick={handleBreedSortClick}
+              >
+                Breed{' '}
+                {breedSortActive ? (
+                  isAscending ? (
+                    <FaArrowUp />
+                  ) : (
+                    <FaArrowDown />
+                  )
+                ) : null}
+              </button>
+              <button
+                className={`asc-desc-btn btn ${ageSortActive ? 'active' : ''}`}
+                onClick={handleAgeSortClick}
+              >
+                Age{' '}
+                {ageSortActive ? (
+                  isAscending ? (
+                    <FaArrowUp />
+                  ) : (
+                    <FaArrowDown />
+                  )
+                ) : null}
               </button>
             </div>
 
@@ -138,7 +217,7 @@ const Search = () => {
             </div>
           </div>
         </div>
-        {/* <img className='search-bg' src={twodogs} alt='Two Dogs' /> */}
+
         <div className='foot'>
           <Footer />
         </div>

@@ -10,6 +10,15 @@ html {
 }
 .search-head {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.434);
+  border-radius: 15px;
+  padding: 20px;
+}
+.search-head p {
+  font-size: 1.2rem;
+}
+.head-text {
+  padding: 10px;
 }
 .search-container {
   display: flex;
@@ -88,7 +97,7 @@ html {
 .search-results-container {
   position: relative;
   margin: 0 auto 50px auto;
-
+  color: #e7e5df;
   background-color: #1b3638;
   padding: 20px;
   width: 80%;
@@ -103,7 +112,7 @@ html {
   position: relative;
 }
 .content {
-  flex: 1;
+  flex-grow: 1;
   position: relative;
 }
 .foot {
