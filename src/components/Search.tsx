@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Nav from './Nav';
 import '../styles/search.css';
 import Breeds from './Breeds';
@@ -31,7 +31,6 @@ const Search = () => {
     const newIsAscending = !isAscending;
     setIsAscending(newIsAscending);
     setAscending(newIsAscending ? 'asc' : 'desc');
-    handleSearch(selectedBreed, nextResults);
   };
 
   const handleAgeSortClick = () => {
@@ -40,7 +39,6 @@ const Search = () => {
     const newIsAscending = !isAscending;
     setIsAscending(newIsAscending);
     setAscending(newIsAscending ? 'asc' : 'desc');
-    handleSearch(selectedBreed, nextResults);
   };
 
   const addNextResults = () => {
@@ -50,21 +48,16 @@ const Search = () => {
   const handleNextPageClick = () => {
     setNextPage(nextPage + 25);
     addNextResults();
-    handleSearch(selectedBreed, nextResults);
-    console.log(nextPage);
   };
   const handlePrevPageClick = () => {
     setNextPage(nextPage - 25);
-
     addNextResults();
-    handleSearch(selectedBreed, nextResults);
-    console.log(nextPage);
   };
 
-  const handleSearch = (breed: string = '', nextResults: string = '') => {
+  useEffect(() => {
     const ageFilters = `&ageMin=${ageMin}&ageMax=${ageMax}`;
-
-    let endpoint = `https://frontend-take-home-service.fetch.com/dogs/search?${nextResults}${ageFilters}`;
+    const addNextResults = `&size=25&from=${nextPage}`;
+    let endpoint = `https://frontend-take-home-service.fetch.com/dogs/search?${addNextResults}${ageFilters}`;
 
     if (breedSortActive) {
       endpoint += `${breedSort}`;
@@ -72,9 +65,10 @@ const Search = () => {
       endpoint += `${ageSort}`;
     }
 
-    if (breed) {
-      endpoint += `&breeds=${breed}`;
+    if (selectedBreed) {
+      endpoint += `&breeds=${selectedBreed}`;
     }
+
     fetch(endpoint, {
       method: 'GET',
       credentials: 'include',
@@ -86,16 +80,11 @@ const Search = () => {
         return response.json();
       })
       .then(async (data) => {
-        console.log('Search response data:', data);
-
         if (data && data.resultIds) {
           const resultIds = data.resultIds;
           const total = data.total;
-          console.log('Total Number of Results', total);
           setTotal(total);
-          console.log('Result IDs: ', resultIds);
           const fetchedDogData = await fetchDogData(resultIds);
-          console.log('Fetched dog data:', fetchedDogData);
           setSearchResultData(fetchedDogData);
         } else {
           setSearchResultData([]);
@@ -105,7 +94,20 @@ const Search = () => {
         console.error('Error searching:', error);
         setSearchResultData([]);
       });
-  };
+  }, [
+    selectedBreed,
+    nextPage,
+    nextResults,
+    breedSortActive,
+    ageSortActive,
+    isAscending,
+    ageMin,
+    ageMax,
+  ]);
+
+  useEffect(() => {
+    setNextPage(0);
+  }, [selectedBreed]);
 
   return (
     <div className='container'>
@@ -148,12 +150,7 @@ const Search = () => {
                 ))}
               </select>
             </div>
-            <button
-              className='search-btn btn'
-              onClick={() => handleSearch(selectedBreed, nextResults)}
-            >
-              Search
-            </button>
+
             <button className='search-btn btn'>
               <Link to='/favorites' className='link-button'>
                 Go To My Favorites
@@ -197,6 +194,33 @@ const Search = () => {
                 ) : null}
               </button>
             </div>
+            <div
+              className='pag-container'
+              style={{
+                justifyContent:
+                  nextPage === 0
+                    ? 'flex-end'
+                    : nextPage + 25 >= total
+                    ? 'flex-start'
+                    : 'space-between',
+              }}
+            >
+              <button
+                className='next25 btn'
+                onClick={handlePrevPageClick}
+                style={{ display: nextPage === 0 ? 'none' : 'block' }}
+              >
+                Previous 25
+              </button>
+
+              <button
+                className='next25 btn'
+                onClick={handleNextPageClick}
+                style={{ display: nextPage + 25 >= total ? 'none' : 'block' }}
+              >
+                Next 25
+              </button>
+            </div>
 
             {searchResultData.length > 0 && (
               <SearchResults
@@ -207,11 +231,19 @@ const Search = () => {
               />
             )}
             <div className='pag-container'>
-              <button className='next25 btn' onClick={handlePrevPageClick}>
+              <button
+                className='next25 btn'
+                onClick={handlePrevPageClick}
+                style={{ display: nextPage === 0 ? 'none' : 'block' }}
+              >
                 Previous 25
               </button>
 
-              <button className='next25 btn' onClick={handleNextPageClick}>
+              <button
+                className='next25 btn'
+                onClick={handleNextPageClick}
+                style={{ display: nextPage + 25 >= total ? 'none' : 'block' }}
+              >
                 Next 25
               </button>
             </div>
