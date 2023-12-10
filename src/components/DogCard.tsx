@@ -74,24 +74,25 @@ const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
       onClick={handleClick}
     >
       <img src={img} alt={name} className='dog-image' />
+      <button className='dog-info heart' onClick={handleClick}>
+        {isAddedToList ? <FaHeart /> : <FaRegHeart />}
+      </button>
       <div className='dog-details'>
         <h2 className='dog-name'>{name}</h2>
         <div className='dog-stats'>
-          <p className='dog-info'>
+          <p className='dog-info breed-box'>
             <FaDog className='breed-icon icon' />
             {breed}
           </p>
-          <p className='dog-info'>
+
+          <p className='dog-info age-box'>
             <FaBirthdayCake className='age-icon icon' />
             {age} years
           </p>
-          <p className='dog-info'>
+          <p className='dog-info zip-box'>
             <FaMapLocationDot className='location-icon icon' />
             {zip_code}
           </p>
-          <button className='dog-info heart' onClick={handleClick}>
-            {isAddedToList ? <FaHeart /> : <FaRegHeart />}
-          </button>
         </div>
       </div>
     </div>

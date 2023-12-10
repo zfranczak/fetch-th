@@ -7,6 +7,7 @@ import SearchResults from './SearchResults';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import Pagination from './Pagination';
 
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
@@ -19,6 +20,7 @@ const Search = () => {
   const [ageSortActive, setAgeSortActive] = useState(false);
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(15);
+  const [pageNumber, setPageNumber] = useState<number>(1);
 
   let nextResults = '';
 
@@ -133,7 +135,7 @@ const Search = () => {
                 value={ageMin}
                 onChange={(e) => setAgeMin(parseInt(e.target.value))}
               >
-                {Array.from({ length: 21 }, (_, i) => (
+                {Array.from({ length: 16 }, (_, i) => (
                   <option key={i} value={i}>
                     Age Minimum: {i}
                   </option>
@@ -143,7 +145,7 @@ const Search = () => {
                 value={ageMax}
                 onChange={(e) => setAgeMax(parseInt(e.target.value))}
               >
-                {Array.from({ length: 21 }, (_, i) => (
+                {Array.from({ length: 16 }, (_, i) => (
                   <option key={i} value={i}>
                     Age Maximum: {i}
                   </option>
@@ -194,34 +196,13 @@ const Search = () => {
                 ) : null}
               </button>
             </div>
-            <div
-              className='pag-container'
-              style={{
-                justifyContent:
-                  nextPage === 0
-                    ? 'flex-end'
-                    : nextPage + 25 >= total
-                    ? 'flex-start'
-                    : 'space-between',
-              }}
-            >
-              <button
-                className='next25 btn'
-                onClick={handlePrevPageClick}
-                style={{ display: nextPage === 0 ? 'none' : 'block' }}
-              >
-                Previous 25
-              </button>
-
-              <button
-                className='next25 btn'
-                onClick={handleNextPageClick}
-                style={{ display: nextPage + 25 >= total ? 'none' : 'block' }}
-              >
-                Next 25
-              </button>
-            </div>
-
+            <Pagination
+              nextPage={nextPage}
+              total={total}
+              handlePrevPageClick={handlePrevPageClick}
+              handleNextPageClick={handleNextPageClick}
+              pageNumber={pageNumber}
+            />
             {searchResultData.length > 0 && (
               <SearchResults
                 dogs={searchResultData}
@@ -230,23 +211,13 @@ const Search = () => {
                 }}
               />
             )}
-            <div className='pag-container'>
-              <button
-                className='next25 btn'
-                onClick={handlePrevPageClick}
-                style={{ display: nextPage === 0 ? 'none' : 'block' }}
-              >
-                Previous 25
-              </button>
-
-              <button
-                className='next25 btn'
-                onClick={handleNextPageClick}
-                style={{ display: nextPage + 25 >= total ? 'none' : 'block' }}
-              >
-                Next 25
-              </button>
-            </div>
+            <Pagination
+              nextPage={nextPage}
+              total={total}
+              handlePrevPageClick={handlePrevPageClick}
+              handleNextPageClick={handleNextPageClick}
+              pageNumber={pageNumber}
+            />
           </div>
         </div>
 

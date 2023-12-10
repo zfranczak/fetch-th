@@ -66,6 +66,9 @@
 .selected {
   box-shadow: 0 0 15px white;
 }
+.breed-box {
+  min-width: 200px;
+}
 
 .heart {
   color: red;
@@ -73,7 +76,10 @@
   background-color: transparent;
   border: none;
   height: 50px;
-  width: 50px;
+  width: 200px;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
 }
 .heart:hover {
   font-size: 30px;
