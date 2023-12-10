@@ -3,7 +3,7 @@ import React from 'react';
 interface PaginationProps {
   nextPage: number;
   total: number;
-  pageNumber: number;
+  //   pageNumber: number;
   handlePrevPageClick: () => void;
   handleNextPageClick: () => void;
 }
@@ -13,7 +13,7 @@ const Pagination: React.FC<PaginationProps> = ({
   total,
   handlePrevPageClick,
   handleNextPageClick,
-  pageNumber,
+  //   pageNumber,
 }) => {
   return (
     <div
@@ -34,7 +34,7 @@ const Pagination: React.FC<PaginationProps> = ({
       >
         Previous 25
       </button>
-      <p>{pageNumber}</p>
+      {/* <p>{pageNumber}</p> */}
       <button
         className='next25 btn'
         onClick={handleNextPageClick}

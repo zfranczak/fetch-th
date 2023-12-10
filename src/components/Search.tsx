@@ -20,7 +20,7 @@ const Search = () => {
   const [ageSortActive, setAgeSortActive] = useState(false);
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(15);
-  const [pageNumber, setPageNumber] = useState<number>(1);
+  // const [pageNumber, setPageNumber] = useState<number>(1);
 
   let nextResults = '';
 
@@ -201,7 +201,7 @@ const Search = () => {
               total={total}
               handlePrevPageClick={handlePrevPageClick}
               handleNextPageClick={handleNextPageClick}
-              pageNumber={pageNumber}
+              // pageNumber={pageNumber}
             />
             {searchResultData.length > 0 && (
               <SearchResults
@@ -216,7 +216,7 @@ const Search = () => {
               total={total}
               handlePrevPageClick={handlePrevPageClick}
               handleNextPageClick={handleNextPageClick}
-              pageNumber={pageNumber}
+              // pageNumber={pageNumber}
             />
           </div>
         </div>
