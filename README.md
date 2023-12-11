@@ -2,15 +2,60 @@
 
 A web application that helps users find their perfect dog companion by browsing through a comprehensive database of dog breeds. Users can filter their search based on breed and age, allowing them to discover dogs that match their preferences. Additionally, the application provides a favorites feature where users can save their preferred dogs for future reference. The matching algorithm assists users in finding the ideal dog based on their selected favorites.
 
+## Hosted Demo
+
+[Doggie Dilemma Live Demo](https://stately-duckanoo-82a9e1.netlify.app/)
+
 ## Table of Contents
 
 - [Introduction](#project-name)
+- [General Requirements](#general-requirements)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Running Locally](#running-locally)
 - [How to Use the App](#how-to-use-the-app)
 - [Folder Structure](#folder-structure)
 - [Dependencies](#dependencies)
+
+### General Requirements
+
+- **Login Screen:**
+
+  - Users must enter their name and email.
+  - Use this information to authenticate via the login endpoint in the provided API reference.
+
+- **Search Page:**
+
+  - Users authenticated successfully should access a search page with the following features:
+    - Ability to filter by breed.
+    - Pagination for search results.
+    - Default sorting of results by breed in alphabetical order. Users can modify the sort order (ascending/descending).
+
+- **Dog Display:**
+
+  - All fields of the Dog object (except for ID) should be presented.
+
+- **Favorite Dogs:**
+
+  - Users can mark dogs as favorites from search results.
+  - Option to generate a match based on favorited dogs using the `/dogs/match` endpoint.
+  - Display the generated match as appropriate.
+
+- **Creative Freedom:**
+  - Beyond the minimum requirements, exercise creativity to showcase strengths.
+
+### Additional Requirements
+
+- **Hosting:**
+
+  - The app should be hosted online for interaction.
+
+- **Source Code Management:**
+
+  - Store source code in a git repository hosted on platforms like GitHub.
+
+- **Documentation:**
+  - Include necessary documentation for local setup and running of the site.
 
 ## Getting Started
 
