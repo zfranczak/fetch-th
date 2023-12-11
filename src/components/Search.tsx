@@ -168,17 +168,17 @@ const Search = () => {
             </div>
 
             <Link to='/favorites' className='link-button'>
-              <button className='search-btn btn'>Go To My Favorites</button>
+              <button className='search-btn'>Go To My Favorites</button>
             </Link>
           </div>
           <div
             className='search-results-container'
             style={{ display: searchResultData.length ? 'block' : 'none' }}
           >
-            <h1>Search Results</h1>
+            <h1>SEARCH RESULTS</h1>
             <p>Total number of results: {total}</p>
             <div className='sort'>
-              <p>Sort by: </p>
+              <p>SORT BY: </p>
 
               <button
                 className={`asc-desc-btn btn ${

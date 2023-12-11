@@ -14,6 +14,8 @@
   position: relative;
   opacity: 1;
   transition: opacity 0.5s ease-out;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .dog-details {
@@ -86,7 +88,8 @@
   border-radius: 15px;
   transition: opacity 1s ease-out;
   opacity: 0;
-  top: 200px;
+  top: 180px;
+  padding: 5px;
 }
 .popup-added.active {
   opacity: 1;

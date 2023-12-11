@@ -93,7 +93,7 @@ const Favorites = () => {
             {!showLoader && match && <MatchCard key={match.id} dog={match} />}
           </div>
           <button className='match-btn' onClick={makeMatch}>
-            Generate My Perfect Match
+            GENERATE MY PERFECT MATCH
           </button>
           <h1>Favorites</h1>
           <div className='card-container'>

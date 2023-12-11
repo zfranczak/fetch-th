@@ -45,9 +45,9 @@ function Login() {
         <img className='login-bg' src={dogbones} alt='Dog Bones'></img>
         <div className='form-content'>
           <form onSubmit={handleSubmit}>
-            <h1>Welcome back!</h1>
-            <p>Please enter your name and email.</p>
-            <label>Name</label>
+            <h1 className='form-text'>Welcome back!</h1>
+            <p className='form-text'>Please enter your name and email.</p>
+            <label className='form-text'>Name</label>
             <input
               type='text'
               placeholder='Enter Name'
@@ -57,7 +57,7 @@ function Login() {
               required
             />
 
-            <label>Email</label>
+            <label className='form-text'>Email</label>
             <input
               type='text'
               placeholder='Enter Email'
@@ -67,8 +67,8 @@ function Login() {
               required
             />
 
-            <button type='submit' className='login-btn'>
-              Login
+            <button type='submit' className='login-btn form-text'>
+              LOGIN
             </button>
           </form>
         </div>

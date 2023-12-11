@@ -15,11 +15,17 @@ form {
   flex-direction: column;
   gap: 10px;
 }
+.form-text {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
 input {
   border-radius: 15px;
   height: 2.2em;
   padding: 0 10px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .login-container {

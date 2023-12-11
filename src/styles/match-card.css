@@ -1,12 +1,13 @@
 .match-card {
   display: block;
   background-color: #047f64;
-  max-width: 800px;
+  max-width: 80%;
   margin: 15px auto;
   padding: 10px;
   box-shadow: 5px -3px 30px rgb(0, 0, 0);
   border-radius: 50px;
   color: white;
+  padding: 20px;
 }
 
 .match-container {
@@ -17,9 +18,8 @@
   gap: 10px;
 }
 .match-image {
-  width: 500px;
-  height: 400px;
   object-fit: cover;
+  width: 80%;
   border-radius: 20px;
   border: 1px white solid;
 }
@@ -29,21 +29,31 @@
 .match-info {
   max-width: 50%;
   height: 50px;
-  font-size: 24px;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .match-stats {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
   padding: 0 10px;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   background-color: #0c5142;
   border-radius: 5px;
   margin-top: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.368);
+}
+@media (max-width: 650px) {
+  .match-stats {
+    flex-direction: column;
+  }
+  .match-info {
+    flex-direction: column;
+    padding: 0;
+  }
 }

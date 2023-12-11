@@ -5,6 +5,8 @@
   background-color: #ffffff;
   color: #1b3638;
   font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .dropdown:hover {
   cursor: pointer;

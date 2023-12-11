@@ -7,6 +7,8 @@ container html {
 
 .container {
   position: relative;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+    'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 .search-head {
   text-align: center;
@@ -30,11 +32,9 @@ container html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
   position: relative;
-
-  height: 50vh;
-  width: 100%;
+  padding: 35px 0;
 }
 .background-image {
   position: fixed;
@@ -74,20 +74,24 @@ container html {
   width: 400px;
   background: #047f64;
 }
-.link-button {
-  height: 80px;
-  width: 400px;
-}
+
 .link-button:hover {
   color: white;
-  height: 80px;
-  width: 400px;
+  /* height: 80px; */
 }
 
 .filters {
   display: flex;
   flex-direction: row;
   gap: 10px;
+}
+@media (max-width: 800px) {
+  .filters {
+    flex-direction: column;
+  }
+  .search-head {
+    width: 80vw;
+  }
 }
 .next25 {
   cursor: pointer;
