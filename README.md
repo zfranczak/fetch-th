@@ -17,7 +17,7 @@ I am eagerly awaiting your feedback on the project.
 ## Table of Contents
 
 - [Introduction](#project-name)
-- [General Requirements](#general-requirements)
+- [General Requirements for This Assignment](#general-requirements)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Running Locally](#running-locally)
@@ -25,7 +25,7 @@ I am eagerly awaiting your feedback on the project.
 - [Folder Structure](#folder-structure)
 - [Dependencies](#dependencies)
 
-## General Requirements
+## General Requirements for This Assignment
 
 - **Login Screen:**
 
