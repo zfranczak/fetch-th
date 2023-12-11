@@ -4,7 +4,7 @@ import Nav from './Nav';
 import '../styles/favorites.css';
 import MatchCard from './MatchCard';
 import Footer from './Footer';
-import Loader from './loader';
+import Loader from './Loader';
 
 interface Dog {
   id: string;
