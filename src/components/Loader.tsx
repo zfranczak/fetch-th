@@ -1,6 +1,6 @@
 import '../styles/loader.css';
 
-const Loader = () => {
+const Loader: React.FC = () => {
   return (
     <div className='loader'>
       <h2 className='icon-loader'>Finding your Perfect match!</h2>
