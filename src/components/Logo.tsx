@@ -6,7 +6,7 @@ const Logo = () => {
       <i>
         <PiDogFill className='logo-dog' />
       </i>
-      <a className='logo-text'>DOGGIE DILEMA</a>
+      <a className='logo-text'>DOGGIE DILEMMA</a>
     </div>
   );
 };

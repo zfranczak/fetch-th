@@ -132,7 +132,7 @@ const Search = () => {
             <div className='search-head'>
               <h1 className='head-text'>FIND YOUR PERFECT DOG</h1>
               <h2 className='subtext head-text'>
-                Let Doggie Dilema match you with your perfect dog!
+                Let Doggie Dilemma match you with your perfect dog!
               </h2>
               <p className='head-text'>
                 Embark on a playful journey through our delightful database of

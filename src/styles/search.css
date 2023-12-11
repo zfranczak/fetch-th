@@ -84,6 +84,12 @@ container html {
   display: flex;
   flex-direction: row;
   gap: 10px;
+  position: relative;
+}
+.filters select {
+  background-color: #03856b;
+  color: white;
+  border-top: 1px solid black;
 }
 @media (max-width: 800px) {
   .filters {
@@ -157,6 +163,7 @@ container html {
   max-width: 1500px;
   border-radius: 15px;
   text-align: center;
+  box-shadow: 0 0 5px rgba(40, 43, 41, 0.853);
 }
 .main {
   display: flex;

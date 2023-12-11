@@ -54,6 +54,7 @@ input {
   margin: 5px;
   border-radius: 25px;
   color: black;
+  cursor: pointer;
 }
 .login-btn:hover {
   background-color: #e9b0da;
