@@ -67,60 +67,55 @@ Explore, search, save favorites, and discover your ideal furry companion with ea
 
 ## Folder Structure
 
-Fetch-th/
-│
-├── node_modules/
-├── public/
-├── src/
-│ ├── assets/
-│ │ ├── dogbones.jpg
-│ │ └── twodogs.jpg
-│ │
-│ ├── components/
-│ │ ├── Breeds.tsx
-│ │ ├── DogCard.tsx
-│ │ ├── Favorites.tsx
-│ │ ├── Footer.tsx
-│ │ ├── Loader.tsx
-│ │ ├── Login.tsx
-│ │ ├── Logo.tsx
-│ │ ├── Logout.tsx
-│ │ ├── MatchCard.tsx
-│ │ ├── Nav.tsx
-│ │ ├── Pagination.tsx
-│ │ ├── Search.tsx
-│ │ └── SearchResults.tsx
-│ │
-│ ├── styles/
-│ │ ├── breeds.css
-│ │ ├── dog-card.css
-│ │ ├── favorites.css
-│ │ ├── footer.css
-│ │ ├── loader.css
-│ │ ├── login.css
-│ │ ├── match-card.css
-│ │ ├── nav.css
-│ │ ├── search-results.css
-│ │ └── search.css
-│ │
-│ ├── tests/
-│ │ └── testDogAPI.ts
-│ │
-│ └── utils/
-│ ├── dogAPIUtil.ts
-│ ├── fetchBreeds.ts
-│ └── logout.ts
-│
-├── .eslintrc.cjs
-├── .gitignore
-├── index.html
-├── netlify.toml
-├── package-lock.json
-├── package.json
-├── README.md
-├── tsconfig.json
-├── tsconfig.node.json
-└── vite.config.ts
+.
+
+- node_modules/
+- public/
+- src/
+  - assets/
+    - dogbones.jpg
+    - twodogs.jpg
+  - components/
+    - Breeds.tsx
+    - DogCard.tsx
+    - Favorites.tsx
+    - Footer.tsx
+    - Loader.tsx
+    - Login.tsx
+    - Logo.tsx
+    - Logout.tsx
+    - MatchCard.tsx
+    - Nav.tsx
+    - Pagination.tsx
+    - Search.tsx
+    - SearchResults.tsx
+  - styles/
+    - breeds.css
+    - dog-card.css
+    - favorites.css
+    - footer.css
+    - loader.css
+    - login.css
+    - match-card.css
+    - nav.css
+    - search-results.css
+    - search.css
+  - tests/
+    - testDogAPI.ts
+  - utils/
+  - dogAPIUtil.ts
+  - fetchBreeds.ts
+  - logout.ts
+- .eslintrc.cjs
+- .gitignore
+- index.html
+- netlify.toml
+- package-lock.json
+- package.json
+- README.md
+- tsconfig.json
+- tsconfig.node.json
+- vite.config.ts
 
 ## Dependencies
 
