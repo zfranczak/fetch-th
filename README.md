@@ -2,6 +2,14 @@
 
 A web application that helps users find their perfect dog companion by browsing through a comprehensive database of dog breeds. Users can filter their search based on breed and age, allowing them to discover dogs that match their preferences. Additionally, the application provides a favorites feature where users can save their preferred dogs for future reference. The matching algorithm assists users in finding the ideal dog based on their selected favorites.
 
+## Introduction
+
+Greetings,
+
+I'm Zachary Franczak, and crafting this project has been an absolute delight. I ensured that it not only fulfilled all general requirements but also surpassed expectations, focusing on a delightful, swift, and responsive design. Throughout its development, I utilized Vite as the development environment, employing technologies like React and TypeScript. Embracing the best development practices within my expertise, I strived for utmost clarity and cleanliness in the application.
+
+I am eagerly awaiting your feedback on the project.
+
 ## Hosted Demo
 
 [Doggie Dilemma Live Demo](https://stately-duckanoo-82a9e1.netlify.app/)
@@ -17,7 +25,7 @@ A web application that helps users find their perfect dog companion by browsing 
 - [Folder Structure](#folder-structure)
 - [Dependencies](#dependencies)
 
-### General Requirements
+## General Requirements
 
 - **Login Screen:**
 
