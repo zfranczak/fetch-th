@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 const Logout = () => {
-  const [isLoggedOut, setIsLoggedOut] = useState<boolean>(false);
   const [logoutMessage, setLogoutMessage] = useState<boolean>(false);
   const navigate = useNavigate();
 
@@ -20,11 +19,10 @@ const Logout = () => {
       console.log('Response status:', response.status);
 
       if (response.ok) {
-        setIsLoggedOut(true);
         setLogoutMessage(true);
         setTimeout(() => {
           setLogoutMessage(false);
-          // Redirect to login after logout
+
           navigate('/');
         }, 2000);
       } else {

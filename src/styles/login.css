@@ -1,12 +1,25 @@
-.login-bg {
+/* .login-bg {
   width: 100%;
   object-fit: cover;
   overflow: hidden;
+  position: fixed;
+} */
+.login-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('../assets/dogbones.jpg');
+  background-size: cover;
+  opacity: 0.8;
+  z-index: -1;
+  background-position: center;
 }
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   .login-bg {
     height: 100vh;
-    wisth: auto;
+    width: auto;
   }
 }
 
@@ -28,17 +41,15 @@ input {
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
-.login-container {
-  position: relative;
-}
 .form-content {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
     'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   background-color: #1b3638;
@@ -46,7 +57,10 @@ input {
   border-radius: 15px;
   color: white;
   box-shadow: 5px 8px 6px -6px #33686b;
+  max-width: 80%; /* Adjust the maximum width as needed */
+  width: 300px; /* Set a fixed width or use max-width for responsiveness */
 }
+
 .login-btn {
   background-color: #dec9de;
   color: white;

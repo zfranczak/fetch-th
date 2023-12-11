@@ -1,5 +1,4 @@
 import '../styles/login.css';
-import dogbones from '../assets/dogbones.jpg';
 import Logo from './Logo';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -42,7 +41,7 @@ function Login() {
     <div>
       <Logo />
       <div className='login-container'>
-        <img className='login-bg' src={dogbones} alt='Dog Bones'></img>
+        <div className='login-bg'></div>
         <div className='form-content'>
           <form onSubmit={handleSubmit}>
             <h1 className='form-text'>Welcome back!</h1>
