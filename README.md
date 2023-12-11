@@ -11,8 +11,6 @@ A web application that helps users find their perfect dog companion by browsing 
 - [How to Use the App](#how-to-use-the-app)
 - [Folder Structure](#folder-structure)
 - [Dependencies](#dependencies)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Getting Started
 
@@ -72,9 +70,7 @@ Explore, search, save favorites, and discover your ideal furry companion with ea
 Fetch-th/
 │
 ├── node_modules/
-│
 ├── public/
-│
 ├── src/
 │ ├── assets/
 │ │ ├── dogbones.jpg
@@ -116,23 +112,14 @@ Fetch-th/
 │ └── logout.ts
 │
 ├── .eslintrc.cjs
-│
 ├── .gitignore
-│
 ├── index.html
-│
 ├── netlify.toml
-│
 ├── package-lock.json
-│
 ├── package.json
-│
 ├── README.md
-│
 ├── tsconfig.json
-│
 ├── tsconfig.node.json
-│
 └── vite.config.ts
 
 ## Dependencies
