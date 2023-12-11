@@ -1,4 +1,4 @@
-.breeds-dropdown {
+.dropdown {
   padding: 10px;
   border-radius: 5px;
   border: 2px solid #1b3638;
@@ -6,7 +6,7 @@
   color: #1b3638;
   font-size: 16px;
 }
-.breeds-dropdown:hover {
+.dropdown:hover {
   cursor: pointer;
   box-shadow: 0 0 10px #1b3638;
   box-shadow: 0 0 10px #1b3638;

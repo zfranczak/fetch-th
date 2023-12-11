@@ -21,6 +21,7 @@ interface DogCardProps {
 const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
   const { id, img, name, age, zip_code, breed } = dog;
   const [isAddedToList, setIsAddedToList] = useState<boolean>(false);
+  const [showAddedMessage, setShowAddedMessage] = useState<boolean>(false);
 
   const isDogInList = (): boolean => {
     const storedDogList = localStorage.getItem('doglist');
@@ -41,6 +42,14 @@ const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
     if (onAdd) {
       onAdd(dog); // Notify parent component of the addition
     }
+
+    setIsAddedToList(true);
+    setShowAddedMessage(true);
+
+    // Hide the added message after 1 second
+    setTimeout(() => {
+      setShowAddedMessage(false);
+    }, 1000);
   };
 
   const handleRemoveFromDogList = () => {
@@ -74,11 +83,17 @@ const DogCard: React.FC<DogCardProps> = ({ dog, onAdd, onRemove }) => {
       onClick={handleClick}
     >
       <img src={img} alt={name} className='dog-image' />
-      <button className='dog-info heart' onClick={handleClick}>
-        {isAddedToList ? <FaHeart /> : <FaRegHeart />}
-      </button>
+      <div className='dog-fav'>
+        <button className='dog-info heart' onClick={handleClick}>
+          {isAddedToList ? <FaHeart /> : <FaRegHeart />}
+        </button>
+      </div>
       <div className='dog-details'>
+        <p className={`popup-added ${showAddedMessage ? 'active' : ''}`}>
+          Added to favorites!
+        </p>
         <h2 className='dog-name'>{name}</h2>
+
         <div className='dog-stats'>
           <p className='dog-info breed-box'>
             <FaDog className='breed-icon icon' />

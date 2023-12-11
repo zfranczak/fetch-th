@@ -32,7 +32,7 @@ function Breeds({
   return (
     <div className='breeds-container'>
       <div className='breeds'>
-        <select className='breeds-dropdown' onChange={handleSelectChange}>
+        <select className='dropdown' onChange={handleSelectChange}>
           <option value=''>All Breeds</option>
           {breeds && breeds.length > 0 ? (
             breeds.map((breed, index) => (

@@ -13,6 +13,9 @@ body {
   box-shadow: inset 0 -5px 5px -5px black;
   padding-bottom: 20px;
 }
+.match-container {
+  position: relative;
+}
 .card-container {
   display: flex;
   flex-direction: row;
@@ -20,17 +23,18 @@ body {
   justify-content: center;
 }
 .match-btn {
-  height: 100px;
-  width: 300px;
-  border-radius: 15px;
-  font-size: 30px;
+  height: 80px;
+  width: 350px;
+
+  font-size: 24px;
   margin-bottom: 10px;
+  transition: all 0.35s;
 }
 .match-btn:hover {
   cursor: pointer;
-  box-shadow: 0 0 5px 5px #1b3638;
-  /* height: 110px;
-  width: 310px; */
+  color: white;
+  width: 450px;
+  background: #047f64;
 }
 .main {
   display: flex;

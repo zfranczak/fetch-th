@@ -21,6 +21,7 @@ const Search = () => {
   const [ageMin, setAgeMin] = useState<number>(0);
   const [ageMax, setAgeMax] = useState<number>(15);
   // const [pageNumber, setPageNumber] = useState<number>(1);
+  const [isBorderActive, setIsBorderActive] = useState<boolean>(false);
 
   let nextResults = '';
 
@@ -33,6 +34,7 @@ const Search = () => {
     const newIsAscending = !isAscending;
     setIsAscending(newIsAscending);
     setAscending(newIsAscending ? 'asc' : 'desc');
+    setIsBorderActive(true);
   };
 
   const handleAgeSortClick = () => {
@@ -41,6 +43,7 @@ const Search = () => {
     const newIsAscending = !isAscending;
     setIsAscending(newIsAscending);
     setAscending(newIsAscending ? 'asc' : 'desc');
+    setIsBorderActive(true);
   };
 
   const addNextResults = () => {
@@ -111,6 +114,14 @@ const Search = () => {
     setNextPage(0);
   }, [selectedBreed]);
 
+  useEffect(() => {
+    if (breedSortActive || ageSortActive) {
+      setIsBorderActive(true);
+    } else {
+      setIsBorderActive(false);
+    }
+  }, [breedSortActive, ageSortActive]);
+
   return (
     <div className='container'>
       <Nav />
@@ -120,13 +131,14 @@ const Search = () => {
           <div className='search-container'>
             <div className='search-head'>
               <h1 className='head-text'>FIND YOUR PERFECT DOG</h1>
-              <h2 className='head-text'>
+              <h2 className='subtext head-text'>
                 Let Doggie Dilema match you with your perfect dog!
               </h2>
               <p className='head-text'>
-                All you need to do is search through out database of dogs,
-                select your favorites, and then we will generate a match for
-                you!
+                Embark on a playful journey through our delightful database of
+                dogs, pick your favorites, and watch the magic happen! Head over
+                to 'Favorites' and watch the magic unfold. Your ideal furry
+                companion awaits! Get ready to fetch your perfect match!
               </p>
             </div>
             <div className='filters'>
@@ -134,6 +146,7 @@ const Search = () => {
               <select
                 value={ageMin}
                 onChange={(e) => setAgeMin(parseInt(e.target.value))}
+                className='dropdown'
               >
                 {Array.from({ length: 16 }, (_, i) => (
                   <option key={i} value={i}>
@@ -144,6 +157,7 @@ const Search = () => {
               <select
                 value={ageMax}
                 onChange={(e) => setAgeMax(parseInt(e.target.value))}
+                className='dropdown'
               >
                 {Array.from({ length: 16 }, (_, i) => (
                   <option key={i} value={i}>
@@ -153,11 +167,9 @@ const Search = () => {
               </select>
             </div>
 
-            <button className='search-btn btn'>
-              <Link to='/favorites' className='link-button'>
-                Go To My Favorites
-              </Link>
-            </button>
+            <Link to='/favorites' className='link-button'>
+              <button className='search-btn btn'>Go To My Favorites</button>
+            </Link>
           </div>
           <div
             className='search-results-container'
@@ -167,10 +179,15 @@ const Search = () => {
             <p>Total number of results: {total}</p>
             <div className='sort'>
               <p>Sort by: </p>
+
               <button
                 className={`asc-desc-btn btn ${
                   breedSortActive ? 'active' : ''
                 }`}
+                style={{
+                  background:
+                    breedSortActive && isBorderActive ? 'green' : 'none',
+                }}
                 onClick={handleBreedSortClick}
               >
                 Breed{' '}
@@ -182,8 +199,13 @@ const Search = () => {
                   )
                 ) : null}
               </button>
+
               <button
                 className={`asc-desc-btn btn ${ageSortActive ? 'active' : ''}`}
+                style={{
+                  background:
+                    ageSortActive && isBorderActive ? 'green' : 'none',
+                }}
                 onClick={handleAgeSortClick}
               >
                 Age{' '}

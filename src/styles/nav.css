@@ -28,6 +28,11 @@ i {
   border-bottom: #1b3638 2px solid;
   box-shadow: 0 8px 6px -6px #1b3638;
 }
+@media (max-width: 850px) {
+  .nav-links {
+    padding: 0 20px;
+  }
+}
 .logo-dog {
   font-size: 1.5em;
 }

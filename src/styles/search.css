@@ -1,5 +1,5 @@
 body,
-html {
+container html {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
@@ -13,12 +13,17 @@ html {
   background-color: rgba(255, 255, 255, 0.434);
   border-radius: 15px;
   padding: 20px;
+  backdrop-filter: blur(5px);
+  width: 50vw;
 }
 .search-head p {
   font-size: 1.2rem;
 }
-.head-text {
-  padding: 10px;
+/* .head-text {
+} */
+.subtext {
+  padding-bottom: 15px;
+  margin: 10px;
 }
 .search-container {
   display: flex;
@@ -43,6 +48,41 @@ html {
   z-index: -1;
   background-position: center;
 }
+.asc-desc-btn {
+  border-radius: 0;
+  width: 80px;
+  height: 20px;
+  background-color: transparent;
+  border: 1px solid green;
+  color: white;
+}
+.asc-desc-btn svg {
+  position: relative;
+  top: 1px;
+  margin-left: 5px;
+}
+.search-btn {
+  height: 50px;
+  width: 350px;
+  font-size: 24px;
+  margin-bottom: 10px;
+  transition: all 0.35s;
+}
+.search-btn:hover {
+  cursor: pointer;
+  color: white;
+  width: 400px;
+  background: #047f64;
+}
+.link-button {
+  height: 80px;
+  width: 400px;
+}
+.link-button:hover {
+  color: white;
+  height: 80px;
+  width: 400px;
+}
 
 .filters {
   display: flex;
@@ -51,12 +91,20 @@ html {
 }
 .next25 {
   cursor: pointer;
+  width: 100px;
+  background-image: linear-gradient(to bottom right, #00ff00, #008000);
+  margin: 20px 0;
+  padding: 5px;
+  border: none;
+}
+.next25:hover {
+  background-image: linear-gradient(to bottom right, #008000, #00ff00);
 }
 .btn {
-  border-radius: 15px;
-  min-width: 150px;
-  min-height: 30px;
   cursor: pointer;
+  margin: 5px;
+  border-radius: 10px;
+  transition: 200ms;
 }
 .btn:hover {
   box-shadow: 0 0 10px white;
@@ -72,6 +120,7 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  align-items: center;
   padding: 0 15px;
 }
 /* .search {
@@ -110,6 +159,7 @@ html {
   flex-direction: column;
   min-height: 100vh;
   position: relative;
+  margin-top: 50px;
 }
 .content {
   flex-grow: 1;

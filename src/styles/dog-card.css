@@ -11,11 +11,15 @@
   color: white;
   box-shadow: 0 2px 4px rgb(9, 0, 0);
   cursor: pointer;
+  position: relative;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
 }
 
 .dog-details {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 .dog-name {
   margin: 0 auto;
@@ -64,10 +68,28 @@
   width: 150px;
 }
 .selected {
-  box-shadow: 0 0 15px white;
+  background-color: #047f64;
 }
 .breed-box {
   min-width: 200px;
+}
+.dog-fav {
+  border: 2px soliod red;
+  position: absolute;
+  display: flex;
+  justify-content: flex-end;
+  width: 280px;
+}
+.popup-added {
+  background-color: red;
+  position: absolute;
+  border-radius: 15px;
+  transition: opacity 1s ease-out;
+  opacity: 0;
+  top: 200px;
+}
+.popup-added.active {
+  opacity: 1;
 }
 
 .heart {
@@ -75,11 +97,7 @@
   font-size: 24px;
   background-color: transparent;
   border: none;
-  height: 50px;
-  width: 200px;
-  position: absolute;
-  display: flex;
-  justify-content: flex-end;
+  cursor: pointer;
 }
 .heart:hover {
   font-size: 30px;

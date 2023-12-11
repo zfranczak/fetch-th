@@ -4,6 +4,7 @@ import Nav from './Nav';
 import '../styles/favorites.css';
 import MatchCard from './MatchCard';
 import Footer from './Footer';
+import Loader from './loader';
 
 interface Dog {
   id: string;
@@ -16,6 +17,7 @@ interface Dog {
 
 const Favorites = () => {
   const [dogList, setDogList] = useState<Dog[]>([]);
+  const [showLoader, setShowLoader] = useState(false);
   const [match, setMatch] = useState<Dog | null>(null);
   const myDogIds = JSON.parse(localStorage.getItem('doglist') || '[]').map(
     (dog: { id: any }) => dog.id
@@ -57,11 +59,15 @@ const Favorites = () => {
   };
 
   const makeMatch = async () => {
+    setShowLoader(true);
     await handleMatch();
+    setTimeout(() => {
+      setShowLoader(false);
+    }, 4000);
   };
 
   useEffect(() => {
-    console.log('match: ', match); // This will log whenever match changes
+    console.log('match: ', match);
   }, [match]);
 
   useEffect(() => {
@@ -82,7 +88,10 @@ const Favorites = () => {
       <Nav />
       <div className='main'>
         <div className='favorites-container'>
-          {match && <MatchCard key={match.id} dog={match} />}
+          <div className='match-container'>
+            {showLoader && <Loader />}
+            {!showLoader && match && <MatchCard key={match.id} dog={match} />}
+          </div>
           <button className='match-btn' onClick={makeMatch}>
             Generate My Perfect Match
           </button>

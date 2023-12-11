@@ -1,6 +1,6 @@
 .match-card {
   display: block;
-  background-color: #1b3638;
+  background-color: #047f64;
   max-width: 800px;
   margin: 15px auto;
   padding: 10px;
@@ -17,10 +17,11 @@
   gap: 10px;
 }
 .match-image {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 400px;
   object-fit: cover;
   border-radius: 20px;
+  border: 1px white solid;
 }
 .match-name {
   font-size: 50px;
@@ -41,7 +42,7 @@
   padding: 0 10px;
   justify-content: space-between;
   align-items: center;
-  background-color: #315458;
+  background-color: #0c5142;
   border-radius: 5px;
   margin-top: 5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.368);
