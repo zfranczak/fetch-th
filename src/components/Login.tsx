@@ -6,8 +6,7 @@ import { useState } from 'react';
 function Login() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-
-  const [error, setError] = useState('');
+  const [, setError] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (event: { preventDefault: () => void }) => {
@@ -67,15 +66,9 @@ function Login() {
               required
             />
 
-            <button
-              name='login'
-              type='submit'
-              className='login-btn form-text'
-              aria-label='login'
-            >
+            <button type='submit' className='login-btn form-text'>
               LOGIN
             </button>
-            {error && <p className='form-text error-message'>{error}</p>}
           </form>
         </div>
       </div>
