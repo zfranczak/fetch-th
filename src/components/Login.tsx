@@ -1,16 +1,17 @@
 import '../styles/login.css';
 import Logo from './Logo';
-import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-function Login() {
+type LoginProps = {
+  onSubmitSuccess: () => void;
+};
+
+const Login: React.FC<LoginProps> = ({ onSubmitSuccess }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-
   const [error, setError] = useState('');
-  const navigate = useNavigate();
 
-  const handleSubmit = async (event: { preventDefault: () => void }) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
@@ -28,7 +29,7 @@ function Login() {
 
       if (response.ok) {
         console.log('Authentication successful!');
-        navigate('/search');
+        onSubmitSuccess(); // Call the prop function to handle successful login
       } else {
         setError('Invalid credentials. Please try again.');
         console.log('Invalid credentials. Please try again.');
@@ -38,6 +39,7 @@ function Login() {
       console.error('An error occurred:', error);
     }
   };
+
   return (
     <div>
       <Logo />
@@ -81,6 +83,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;

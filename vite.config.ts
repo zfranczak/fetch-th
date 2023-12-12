@@ -11,7 +11,7 @@ export default defineConfig({
     globals: true,
     environment: 'jsdom',
     setupFiles: './src/setup.ts',
-    css: true,
+    // css: true,
     pool: 'forks',
   },
 });

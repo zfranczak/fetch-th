@@ -10,6 +10,7 @@ import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import Pagination from './Pagination';
+import React from 'react';
 
 const Search = () => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
