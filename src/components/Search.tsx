@@ -8,11 +8,15 @@ import { fetchDogData } from '../utils/dogAPIUtil';
 import SearchResults from './SearchResults';
 import { FaArrowUp, FaArrowDown } from 'react-icons/fa';
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
+
 import Pagination from './Pagination';
 import React from 'react';
 
-const Search = () => {
+type SearchProps = {
+  onGoToFavorites: () => void;
+};
+
+const Search: React.FC<SearchProps> = ({ onGoToFavorites }) => {
   const [selectedBreed, setSelectedBreed] = useState<string>('');
   const [searchResultData, setSearchResultData] = useState<any[]>([]);
   const [total, setTotal] = useState<number>(0);
@@ -170,9 +174,9 @@ const Search = () => {
               </select>
             </div>
 
-            <Link to='/favorites' className='link-button'>
+            <div className='link-button' onClick={onGoToFavorites}>
               <button className='search-btn'>Go To My Favorites</button>
-            </Link>
+            </div>
           </div>
           <div
             className='search-results-container'

@@ -1,9 +1,18 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import { MemoryRouter } from 'react-router-dom';
 import Search from '../components/Search';
 
 describe('Search Component', () => {
   it('selects each breed in the dropdown menu', () => {
-    render(<Search />);
+    render(
+      <MemoryRouter>
+        <Search
+          onGoToFavorites={function (): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
+      </MemoryRouter>
+    );
 
     const breedsDropdown = screen.getByLabelText('Breeds') as HTMLSelectElement;
 
